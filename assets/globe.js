@@ -91,6 +91,7 @@ const Globe = () => {
     return (
         <Canvas
             gl={{ antialias: true, toneMapping: NoToneMapping }}
+            size={{ width: window.innerWidth, height: window.innerHeight }}
             resize={{scroll: false}}
         >
 

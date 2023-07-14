@@ -14,7 +14,7 @@ export default function Home() {
             <div className={"w-screen text-center content-center flex justify-center overflow-hidden"}>
                 <div className={"absolute"}>
                     <h1 className={"text-[300px] z-0 text-white"}>
-                        HELLO
+                        IHFRA
                     </h1>
                 </div>
             </div>
