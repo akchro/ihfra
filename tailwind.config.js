@@ -11,7 +11,12 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'banner-pattern':
+          "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,.2) 70%), url(~/assets/IMG_6336.jpeg)",
       },
+      fontFamily: {
+        noto_sans: ['var(--font-noto-sans)']
+      }
     },
   },
   plugins: [],
