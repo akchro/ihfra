@@ -1,12 +1,12 @@
 "use client";
 
-import React, {useRef, useLayoutEffect} from 'react';
+import React, {useRef, useLayoutEffect, useEffect} from 'react';
 import {Canvas, useFrame, extend, useThree} from "@react-three/fiber";
-import ThreeGlobe from "three-globe";
 import countries from './globe-data-min.json';
-import {Suspense} from "react";
+import ThreeGlobe from "three-globe";
 import {Color, DirectionalLight, PointLight, NoToneMapping} from "three";
 import Loading from "@/app/loading";
+import dynamic from "next/dynamic";
 
 extend({ThreeGlobe})
 
@@ -86,33 +86,38 @@ const GlobeObj = () => {
 }
 
 const Globe = () => {
-    const meshRef = useRef();
+
+    const canvasWidth = typeof window !== 'undefined' ? window.innerWidth : 800;
+    const canvasHeight = typeof window !== 'undefined' ? window.innerHeight : 600;
 
     return (
         <Canvas
             gl={{ antialias: true, toneMapping: NoToneMapping }}
-            size={{ width: window.innerWidth, height: window.innerHeight }}
+            size={{ width: canvasWidth, height: canvasHeight }}
             resize={{scroll: false}}
+            suppressHydrationWarning
         >
 
-            <Suspense fallback={<Loading/>}>
-                <ambientLight intensity={0.01} color={0xbbbbbb}/>
-                <fog attach={'fog'} color={0x535ef3} near={1} far={2000}/>
-                <directionalLight color={0xffffff} intensity={0.5} position={[-800, 1500, 300]}/>
-                <directionalLight color={0x7982f6} intensity={0.8} position={[-300, 400, 50]}/>
-                <spotLight color={'802959'} intensity={0.8} position={[50, 500, -40]} angle={0.5}/>
-                <directionalLight color={'#bff7ff'} intensity={3} position={[-300, 400, -300]}/>
-                <directionalLight color={'#bff7ff'} intensity={2} position={[-300, 400, -150]}/>
-                <directionalLight color={'#bff7ff'} intensity={50} position={[-250, 250, -450]}/>
-                <directionalLight color={'#bff7ff'} intensity={50} position={[-270, 0, -470]}/>
-                <directionalLight color={'#bff7ff'} intensity={50} position={[0, 250, -500]}/>
-                <pointLight color={0x8566cc} intensity={0.8} position={[-200, 500, 450]}/>
-                <CameraPosition/>
-                <GlobeObj/>
-            </Suspense>
+
+            <ambientLight intensity={0.01} color={0xbbbbbb}/>
+            <fog attach={'fog'} color={0x535ef3} near={1} far={2000}/>
+            <directionalLight color={0xffffff} intensity={0.5} position={[-800, 1500, 300]}/>
+            <directionalLight color={0x7982f6} intensity={0.8} position={[-300, 400, 50]}/>
+            <spotLight color={'802959'} intensity={0.8} position={[50, 500, -40]} angle={0.5}/>
+            <directionalLight color={'#bff7ff'} intensity={3} position={[-300, 400, -300]}/>
+            <directionalLight color={'#bff7ff'} intensity={2} position={[-300, 400, -150]}/>
+            <directionalLight color={'#bff7ff'} intensity={50} position={[-250, 250, -450]}/>
+            <directionalLight color={'#bff7ff'} intensity={50} position={[-270, 0, -470]}/>
+            <directionalLight color={'#bff7ff'} intensity={50} position={[0, 250, -500]}/>
+            <pointLight color={0x8566cc} intensity={0.8} position={[-200, 500, 450]}/>
+            <CameraPosition/>
+            <GlobeObj/>
+
 
         </Canvas>
     );
 };
 
-export default Globe;
+export default dynamic(() => Promise.resolve(Globe), {
+    ssr: false
+})

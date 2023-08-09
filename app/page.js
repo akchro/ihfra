@@ -1,15 +1,17 @@
 import Image from 'next/image';
-import GlobeComponent from "@/assets/globe";
 import Card from "@/Components/card";
 import {Suspense} from "react";
 import Loading from "@/app/loading";
 import IhfraSplash from '../assets/ihfrasplash.png';
+import dynamic from "next/dynamic";
 import PersonIcon from '@/assets/icons/person.svg';
 import HourglassIcon from '@/assets/icons/hourglass.svg';
 import OrganizationIcon from '@/assets/icons/org.svg';
 import LivesIcon from '@/assets/icons/lives.svg';
 
-
+const GlobeComponent = dynamic(() => import('@/assets/globe'), {
+    ssr: false
+})
 
 export default function Home() {
 
