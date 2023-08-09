@@ -28,7 +28,7 @@ export default function Home() {
                 </div>
 
                 <div className={'h-full w-full z-10 absolute top-[50px]'}>
-                    <GlobeComponent/>
+                        <GlobeComponent/>
                 </div>
             </div>
             {/*<div className={'h-80 bg-gradient-to-b from-black via-gray-500 to-white'}></div>*/}

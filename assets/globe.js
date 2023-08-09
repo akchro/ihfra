@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useRef, useLayoutEffect, useEffect} from 'react';
+import React, {useRef, useLayoutEffect, useEffect, Suspense} from 'react';
 import {Canvas, useFrame, extend, useThree} from "@react-three/fiber";
 import countries from './globe-data-min.json';
 import ThreeGlobe from "three-globe";
@@ -99,19 +99,21 @@ const Globe = () => {
         >
 
 
-            <ambientLight intensity={0.01} color={0xbbbbbb}/>
-            <fog attach={'fog'} color={0x535ef3} near={1} far={2000}/>
-            <directionalLight color={0xffffff} intensity={0.5} position={[-800, 1500, 300]}/>
-            <directionalLight color={0x7982f6} intensity={0.8} position={[-300, 400, 50]}/>
-            <spotLight color={'802959'} intensity={0.8} position={[50, 500, -40]} angle={0.5}/>
-            <directionalLight color={'#bff7ff'} intensity={3} position={[-300, 400, -300]}/>
-            <directionalLight color={'#bff7ff'} intensity={2} position={[-300, 400, -150]}/>
-            <directionalLight color={'#bff7ff'} intensity={50} position={[-250, 250, -450]}/>
-            <directionalLight color={'#bff7ff'} intensity={50} position={[-270, 0, -470]}/>
-            <directionalLight color={'#bff7ff'} intensity={50} position={[0, 250, -500]}/>
-            <pointLight color={0x8566cc} intensity={0.8} position={[-200, 500, 450]}/>
-            <CameraPosition/>
-            <GlobeObj/>
+            <Suspense fallback={<Loading/>}>
+                <ambientLight intensity={0.01} color={0xbbbbbb}/>
+                <fog attach={'fog'} color={0x535ef3} near={1} far={2000}/>
+                <directionalLight color={0xffffff} intensity={0.5} position={[-800, 1500, 300]}/>
+                <directionalLight color={0x7982f6} intensity={0.8} position={[-300, 400, 50]}/>
+                <spotLight color={'802959'} intensity={0.8} position={[50, 500, -40]} angle={0.5}/>
+                <directionalLight color={'#bff7ff'} intensity={3} position={[-300, 400, -300]}/>
+                <directionalLight color={'#bff7ff'} intensity={2} position={[-300, 400, -150]}/>
+                <directionalLight color={'#bff7ff'} intensity={50} position={[-250, 250, -450]}/>
+                <directionalLight color={'#bff7ff'} intensity={50} position={[-270, 0, -470]}/>
+                <directionalLight color={'#bff7ff'} intensity={50} position={[0, 250, -500]}/>
+                <pointLight color={0x8566cc} intensity={0.8} position={[-200, 500, 450]}/>
+                <CameraPosition/>
+                <GlobeObj/>
+            </Suspense>
 
 
         </Canvas>
