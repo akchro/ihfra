@@ -13,6 +13,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'banner-pattern':
           "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,.2) 70%), url(~/assets/IMG_6336.jpeg)",
+        'newsletter': "url(~/assets/newsletter.jpeg)"
       },
       fontFamily: {
         noto_sans: ['var(--font-noto-sans)']

@@ -8,6 +8,7 @@ import PersonIcon from '@/assets/icons/person.svg';
 import HourglassIcon from '@/assets/icons/hourglass.svg';
 import OrganizationIcon from '@/assets/icons/org.svg';
 import LivesIcon from '@/assets/icons/lives.svg';
+import Link from "next/link";
 
 const GlobeComponent = dynamic(() => import('@/assets/globe'), {
     ssr: false
@@ -37,6 +38,12 @@ export default function Home() {
                 <Card img={HourglassIcon} stat={"2000+"} description={"hours volunteered"} topColor={"#a4ff4f"}/>
                 <Card img={OrganizationIcon} stat={"10+"} description={"organizations served"} topColor={"#4ad8ff"}/>
                 <Card img={LivesIcon} stat={"1000+"} description={"lives changed"} topColor={"#ff2626"}/>
+            </div>
+
+            <div className={"h-[600px] bg-newsletter bg-cover bg-center flex justify-center items-center"}>
+                <div className={'bg-white/50 border-solid border-[6px] border-black p-3'}>
+                    <Link href={'/'} className={'text-5xl font-noto_sans'}>Check out our newsletter today!</Link>
+                </div>
             </div>
 
             <div className={"h-[600px] bg-banner-pattern bg-cover bg-center mb-[150px] rounded-br-[150px] relative"}>
