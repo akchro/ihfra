@@ -9,6 +9,7 @@ import HourglassIcon from '@/assets/icons/hourglass.svg';
 import OrganizationIcon from '@/assets/icons/org.svg';
 import LivesIcon from '@/assets/icons/lives.svg';
 import Link from "next/link";
+import Navbar from "@/Components/navbar";
 
 const GlobeComponent = dynamic(() => import('@/assets/globe'), {
     ssr: false
@@ -18,7 +19,7 @@ export default function Home() {
 
     return (
         <main id={'root'}>
-
+            <Navbar/>
             <div className={'bg-black h-[900px] rounded-b-[150px] lg:rounded-b-[200px]'}>
                 <div className={"w-screen text-center content-center flex justify-center overflow-hidden"}>
                     <div className={"absolute"}>
@@ -42,7 +43,7 @@ export default function Home() {
 
             <div className={"h-[600px] bg-newsletter bg-cover bg-center flex justify-center items-center"}>
                 <div className={'bg-white/50 border-solid border-[6px] border-black p-3'}>
-                    <Link href={'/'} className={'text-5xl font-noto_sans'}>Check out our newsletter today!</Link>
+                    <Link href={'/newsletter'} className={'text-5xl font-noto_sans'}>Check out our newsletter today!</Link>
                 </div>
             </div>
 

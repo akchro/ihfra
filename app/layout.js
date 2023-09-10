@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter, Noto_Sans } from 'next/font/google'
+import "supports-color";
 
 
 const inter = Inter({ subsets: ['latin'] })
